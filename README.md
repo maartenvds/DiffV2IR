@@ -72,10 +72,10 @@ Please set the variables in configs/generate.yaml and run:
 python infer.py --ckpt your_ckpt --input input_folder --output output_folder
 ```
 
-## 5 Pretrained Checkpoints
+## 5. Pretrained Checkpoints
 We will update the pretrained checkpoint after Stage 2 of PLM for further training and the pretrained checkpoint of M3FD Dataset   and FLIR Dataset mentioned in the paper.
 
-## 6 Comments
+## 6. Comments
 
 Our codebase is based on the [Stable Diffusion codebase](https://github.com/CompVis/stable-diffusion).
 
