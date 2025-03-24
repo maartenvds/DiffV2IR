@@ -1,13 +1,18 @@
 <div align="center">
-<h1>DiffV2IR: Visible-to-Infrared Diffusion Model via  Vision-Language Understanding </h1>
+<h1>[Arxiv 2025]DiffV2IR: Visible-to-Infrared Diffusion Model via  Vision-Language Understanding </h1>
 </div>
-<div>
+<div align="center">
     Lingyan Ran<sup>1</sup>, Lidong Wang<sup>1</sup>, Guangcong Wang<sup>2</sup>, Peng Wang<sup>1</sup>, Yanning Zhang<sup>1</sup>
 </div>
-<div>
+<div align="center">
     Northwestern Polytechnical University<sup>1</sup>, Great Bay University<sup>2</sup>
 </div>
 
+###  [Project](https://diffv2ir.github.io/) | [YouTube](https://youtu.be/YbUuvjnfejE) | [arXiv]() 
+
+
+>**TL;DR**: We present DiffV2IR, a novel framework for visible-to-infrared image translation comprising two key elements: a Progressive Learning Module (PLM) and a Vision-Language Understanding Module (VLUM), which markedly improves the performance of V2IR. 
+>
 >**Abstract:** The task of translating visible-to-infrared images (V2IR) is inherently challenging due to three main obstacles: 1) achieving semantic-aware translation, 2) managing the diverse wavelength spectrum in infrared imagery, and 3) the scarcity of comprehensive infrared datasets. Current leading methods tend to treat V2IR as a conventional image-to-image synthesis challenge, often overlooking these specific issues. To address this, we introduce DiffV2IR, a novel framework for image translation comprising two key elements: a Progressive Learning Module (PLM) and a Vision-Language Understanding Module (VLUM). PLM features an adaptive diffusion model architecture that leverages multi-stage knowledge learning to infrared transition from full-range to target wavelength. 
 >To improve V2IR translation, VLUM incorporates unified Vision-Language Understanding. 
 >We also collected a large infrared dataset, IR-500K, which includes 500,000 infrared images compiled by various scenes and objects under various environmental conditions. Through the combination of PLM, VLUM, and the extensive IR-500K dataset, DiffV2IR markedly improves the performance of V2IR. Experiments validate DiffV2IR's excellence in producing high-quality translations, establishing its efficacy and broad applicability. The code, dataset, and DiffV2IR model will be available.
@@ -29,7 +34,7 @@ We recommend using the virtual environment (conda) to run the code easily.
 
 ```
 conda create -n DiffV2IR python=3.10.15
-conda activate sparsenerf
+conda activate DiffV2IR
 pip install -r requirements.txt
 ```
 
@@ -78,6 +83,14 @@ We will update the pretrained checkpoint after Stage 2 of PLM for further traini
 ## 6. Comments
 
 Our codebase is based on the [Stable Diffusion codebase](https://github.com/CompVis/stable-diffusion).
+
+## 7. Citation
+
+If you find this useful for your research, please cite the our paper.
+
+```
+coming soon
+```
 
 
 
