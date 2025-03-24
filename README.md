@@ -1,6 +1,6 @@
 <div align="center">
 <h1>DiffV2IR: Visible-to-Infrared Diffusion Model via  Vision-Language Understanding </h1>
-
+</div>
 <div>
     Lingyan Ran<sup>1</sup>, Lidong Wang<sup>1</sup>, Guangcong Wang<sup>2</sup>, Peng Wang<sup>1</sup>, Yanning Zhang<sup>1</sup>
 </div>
