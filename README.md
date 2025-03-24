@@ -2,10 +2,10 @@
 <h1>DiffV2IR: Visible-to-Infrared Diffusion Model via  Vision-Language Understanding </h1>
 
 <div>
-    Lingyan Ran, Lidong Wang, Guangcong Wang, Peng Wang, Yanning Zhang
+    Lingyan Ran<sup>1</sup>, Lidong Wang<sup>1</sup>, Guangcong Wang<sup>2</sup>, Peng Wang<sup>1</sup>, Yanning Zhang<sup>1</sup>
 </div>
 <div>
-    Northwestern Polytechnical University, Great Bay University
+    Northwestern Polytechnical University<sup>1</sup>, Great Bay University<sup>2</sup>
 </div>
 
 >**Abstract:** The task of translating visible-to-infrared images (V2IR) is inherently challenging due to three main obstacles: 1) achieving semantic-aware translation, 2) managing the diverse wavelength spectrum in infrared imagery, and 3) the scarcity of comprehensive infrared datasets. Current leading methods tend to treat V2IR as a conventional image-to-image synthesis challenge, often overlooking these specific issues. To address this, we introduce DiffV2IR, a novel framework for image translation comprising two key elements: a Progressive Learning Module (PLM) and a Vision-Language Understanding Module (VLUM). PLM features an adaptive diffusion model architecture that leverages multi-stage knowledge learning to infrared transition from full-range to target wavelength. 
