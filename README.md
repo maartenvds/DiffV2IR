@@ -7,9 +7,9 @@
 <div align="center">
     Northwestern Polytechnical University<sup>1</sup>, Great Bay University<sup>2</sup>
 </div>
-
+<div align="center">
 ###  [Project](https://diffv2ir.github.io/) | [YouTube](https://youtu.be/YbUuvjnfejE) | [arXiv]() 
-
+</div>
 
 >**TL;DR**: We present DiffV2IR, a novel framework for visible-to-infrared image translation comprising two key elements: a Progressive Learning Module (PLM) and a Vision-Language Understanding Module (VLUM), which markedly improves the performance of V2IR. 
 >
