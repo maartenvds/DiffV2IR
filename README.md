@@ -8,7 +8,7 @@
     Northwestern Polytechnical University<sup>1</sup>, Great Bay University<sup>2</sup>
 </div>
 
-###  												[Project](https://diffv2ir.github.io/) | [YouTube](https://youtu.be/YbUuvjnfejE) | [arXiv]() 
+###  												[Project](https://diffv2ir.github.io/) | [YouTube](https://youtu.be/YbUuvjnfejE) | [arXiv](https://arxiv.org/abs/2503.19012) 
 </div>
 
 >**TL;DR**: We present DiffV2IR, a novel framework for visible-to-infrared image translation comprising two key elements: a Progressive Learning Module (PLM) and a Vision-Language Understanding Module (VLUM), which markedly improves the performance of V2IR. 
@@ -89,7 +89,15 @@ Our codebase is based on the [Stable Diffusion codebase](https://github.com/Comp
 If you find this useful for your research, please cite the our paper.
 
 ```
-coming soon
+@misc{ran2025diffv2irvisibletoinfrareddiffusionmodel,
+      title={DiffV2IR: Visible-to-Infrared Diffusion Model via Vision-Language Understanding}, 
+      author={Lingyan Ran and Lidong Wang and Guangcong Wang and Peng Wang and Yanning Zhang},
+      year={2025},
+      eprint={2503.19012},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2503.19012}, 
+}
 ```
 
 
