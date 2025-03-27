@@ -61,7 +61,7 @@ dataset_name
 ├── seeds.json
 ```
 
-The subfolder seg can be produced by generating masks from the entire image under the guidance of  and then running "process_masks.py".
+The subfolder seg can be produced by generating masks from the entire image using SAM and then running "process_masks.py".
 
 
 ## 3. Training 
