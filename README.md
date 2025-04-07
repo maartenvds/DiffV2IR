@@ -41,7 +41,9 @@ pip install -r requirements.txt
 ## 2. Dataset
 
 ### 2.1 Download IR-500K dataset
-- Download the IR-500K dataset here(coming soon)
+- Download the IR-500K dataset here
+- https://pan.quark.cn/s/47a6b1a99d8e
+- Access Code：NWn2
 ### 2.2 Use your own dataset
 - Our training scripts expect the dataset to be in the following format
 ```
@@ -78,7 +80,10 @@ python infer.py --ckpt your_ckpt --input input_folder --output output_folder
 ```
 
 ## 5. Pretrained Checkpoints
-We will update the pretrained checkpoint after Stage 2 of PLM for further training and the pretrained checkpoint of M3FD Dataset   and FLIR Dataset mentioned in the paper.
+We updated the pretrained checkpoint after Stage 1/2 of PLM for further training and the pretrained checkpoint of M3FD Dataset and FLIR Dataset mentioned in the paper.
+https://pan.quark.cn/s/e2f28304ee90
+Access Code：EWCz
+
 
 ## 6. Comments
 
