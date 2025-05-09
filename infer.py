@@ -109,19 +109,20 @@ def main():
     parser.add_argument("--cfg-text", default=7.5, type=float)
     parser.add_argument("--cfg-image", default=1.5, type=float)
     parser.add_argument("--cfg-seg", default=1.5, type=float)
+    parser.add_argument("--fp16", action="store_true", help="Run model in fp16/half float mode (use less memory)")
     parser.add_argument("--seed", type=int)
     args = parser.parse_args()
-    #os.makedirs('/home/jovyan/.cache/torch/hub/checkpoints/')
-    #shutil.copy("checkpoint_liberty_with_aug.pth","/home/jovyan/.cache/torch/hub/checkpoints/")
-    
+
 
     config = OmegaConf.load(args.config)
     model = load_model_from_config(config, args.ckpt, args.vae_ckpt)
+    if args.fp16:
+        model.half()
     model.eval().cuda()
     model_wrap = K.external.CompVisDenoiser(model)
     model_wrap_cfg = CFGDenoiser(model_wrap)
     null_token = model.get_learned_conditioning([""])
-    blip_model = blip_decoder(pretrained="/data/wld/blip/BLIP-main/model__base_caption.pth", image_size=384, vit='base')
+    blip_model = blip_decoder(image_size=384, vit='base')
     blip_model.eval()
     seed = random.randint(0, 100000) if args.seed is None else args.seed
     for root, dirs, files in os.walk(args.input):
@@ -130,8 +131,8 @@ def main():
             with torch.no_grad():
                 caption = blip_model.generate(image, sample=True, top_p=0.9, max_length=20, min_length=5) 
             args.edit = "turn the visible image of "+caption[0]+" into infrared"
-            input_image = Image.open(os.path.join(args.input,file)).convert("RGB")
-            input_seg = Image.open(os.path.join(args.input+"_seg",file.split(".")[0]+".png")).convert("RGB")
+            input_image = Image.open(os.path.join(root,file)).convert("RGB")
+            input_seg = Image.open(os.path.join(root+"_seg",file.split(".")[0]+".png")).convert("RGB")
             width, height = input_image.size
             factor = args.resolution / max(width, height)
             factor = math.ceil(min(width, height) * factor / 64) * 64 / min(width, height)
@@ -149,6 +150,9 @@ def main():
                 cond["c_crossattn"] = [model.get_learned_conditioning([args.edit])]
                 input_image = 2 * torch.tensor(np.array(input_image)).float() / 255 - 1
                 input_seg = 2 * torch.tensor(np.array(input_seg)).float() / 255 - 1
+                if args.fp16:
+                    input_image = input_image.half()
+                    input_seg = input_seg.half()
                 input_image = rearrange(input_image, "h w c -> 1 c h w").to(model.device)
                 input_seg = rearrange(input_seg, "h w c -> 1 c h w").to(model.device)
                 cond["c_concat1"] = [model.encode_first_stage(input_image).mode()]
@@ -176,7 +180,6 @@ def main():
                 x = 255.0 * rearrange(x, "1 c h w -> h w c")
                 edited_image = Image.fromarray(x.type(torch.uint8).cpu().numpy())
             edited_image.save(os.path.join(args.output,file))
-    
 
 
 if __name__ == "__main__":

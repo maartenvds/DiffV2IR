@@ -56,15 +56,37 @@ dataset_name
 │   ├── 000000.png
 │   ├── 000001.png
 │   └── ...
-├── seg
+├── rgb_seg
 │   ├── 000000.png
 │   ├── 000001.png
 │   └── ...
 ├── seeds.json
 ```
 
-The subfolder seg can be produced by generating masks from the entire image using SAM and then running "process_masks.py".
+## Creating `seg` folder
 
+Install SAM in the same python environment:
+
+```
+git clone https://github.com/facebookresearch/segment-anything.git
+cd segment-anything
+pip install -e .
+```
+
+Then generate the masks:
+
+```
+python scripts/amg.py --checkpoint ../checkpoints/sam_vit_h_4b8939.pth --model-type vit_h --input ../dataset_name/rgb --output ../dataset_name/seg
+```
+
+(See README of SAM to get the weigths)
+
+Then combine the masks into a single mask:
+
+```
+cd ..
+python process_masks.py dataset_name/seg dataset_name/images_seg
+```
 
 ## 3. Training 
 
