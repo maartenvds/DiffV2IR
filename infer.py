@@ -126,13 +126,19 @@ def main():
     blip_model.eval()
     seed = random.randint(0, 100000) if args.seed is None else args.seed
     for root, dirs, files in os.walk(args.input):
-        for file in files:
-            image = load_demo_image(image_size=384, device='cuda',img_url=os.path.join(root,file))
+        for i, file in enumerate(files):
+            output_file = os.path.join(args.output,file)
+            if os.path.exists(output_file):
+                continue
+            input_file = os.path.join(root,file)
+            seg_input_file = os.path.join(root + "_seg",file.split(".")[0] + ".png")
+            print(f"({i+1}/{len(files)}) Processing file {input_file}")
+            image = load_demo_image(image_size=384, device='cuda',img_url=input_file)
             with torch.no_grad():
                 caption = blip_model.generate(image, sample=True, top_p=0.9, max_length=20, min_length=5) 
             args.edit = "turn the visible image of "+caption[0]+" into infrared"
-            input_image = Image.open(os.path.join(root,file)).convert("RGB")
-            input_seg = Image.open(os.path.join(root+"_seg",file.split(".")[0]+".png")).convert("RGB")
+            input_image = Image.open(input_file).convert("RGB")
+            input_seg = Image.open(seg_input_file).convert("RGB")
             width, height = input_image.size
             factor = args.resolution / max(width, height)
             factor = math.ceil(min(width, height) * factor / 64) * 64 / min(width, height)
@@ -179,7 +185,7 @@ def main():
                 x = torch.clamp((x + 1.0) / 2.0, min=0.0, max=1.0)
                 x = 255.0 * rearrange(x, "1 c h w -> h w c")
                 edited_image = Image.fromarray(x.type(torch.uint8).cpu().numpy())
-            edited_image.save(os.path.join(args.output,file))
+            edited_image.save(output_file)
 
 
 if __name__ == "__main__":
